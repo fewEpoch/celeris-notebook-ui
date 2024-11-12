@@ -3,7 +3,8 @@ WORKDIR /celeris-frontend
 COPY package.json package.json ./
 COPY package-lock.json package-lock.json ./
 COPY tsconfig.json tsconfig.json ./
-COPY .env .env.example ./
+COPY .env.example .env.example ./
+ADD .env.example .env
 #TODO: Ideally we shouldn't have to install dev dependencies, but @vidify/ package references fail wituout this.
 #RUN npm install --omit=dev
 RUN npm install
