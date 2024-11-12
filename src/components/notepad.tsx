@@ -4,7 +4,9 @@ import React from "react";
 import { Button } from "./ui/button";
 import FileDownload from '@mui/icons-material/FileDownload';
 import { Document, Packer, Paragraph, TextRun } from "docx";
-import { saveAs } from "file-saver";
+
+
+const FileSaver = require('file-saver');
 
 interface Props {
   messages: string[]
@@ -14,7 +16,7 @@ interface Props {
 export default function Notepad({messages}: Props) {
     const generateDoc = () => {
 
-      var children = []
+      var children: TextRun[] = []
       messages.map((message, index) => (
         children.push( new TextRun({
           text: message,
@@ -35,7 +37,7 @@ export default function Notepad({messages}: Props) {
       })
 
       Packer.toBlob(doc).then((blob) => {
-        saveAs(blob, "sample.docx");
+        FileSaver.saveAs(blob, "research.docx");
       });
       
     }

@@ -22,12 +22,16 @@ export default function Chat() {
   const [copySuccess, setCopySuccess] = useState('')
 
   const copySelectedText = () => {
-    const selectedText = window.getSelection().toString()
-    console.log(selectedText)
-    if (selectedText) {
-      setCopyMessages([...copyMessages, selectedText])
-      console.log("Copied the text")
+    if( typeof window !== "undefined"){
+      const selectedText = window.getSelection()?.toString()
+      console.log(selectedText)
+      if (selectedText) {
+        setCopyMessages([...copyMessages, selectedText])
+        console.log("Copied the text")
+      }
     }
+   
+    
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
