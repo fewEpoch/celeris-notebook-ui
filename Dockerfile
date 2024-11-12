@@ -17,6 +17,7 @@ RUN npm run build
 FROM node:lts as runner
 WORKDIR /celeris-frontend
 ENV NODE_ENV production
+ENV OPENAI_API_KEY "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"
 COPY --from=builder /celeris-frontend/node_modules ./node_modules
 COPY --from=builder /celeris-frontend/.next ./.next
 COPY . ./
